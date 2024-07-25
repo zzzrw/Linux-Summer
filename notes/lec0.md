@@ -217,3 +217,87 @@ ubuntu@ubuntu2204:~$
   > mkdir directory
 
 ### 重定向
+
+- 输入流
+
+  - 默认键盘
+
+- 输出流
+
+  - 默认屏幕
+
+- 重定向流到文件
+
+  - \> file
+
+    > 将输入流输出到hello.txt
+
+    - echo hello > hello.txt
+    - cat hello.txt
+
+  - < file
+
+    > 将文件内容作为参数输入到前面的指令
+
+    - cat < hello.txt
+    - cat < hello.txt > hello2.txt
+
+  - \>\>
+
+    > 将新内容追加到现有文件中，不存在也会创建新文件夹
+
+    - cat < hello.txt \>\> hello2.txt
+
+### 管道
+
+`|`
+
+> 将一个程序的输出和另一个程序的输入连接起来
+
+- `ls -l / | tail -n1` 显示根目录文件信息输出最后一行
+
+  >  注意：有的指令并不能直接从标准输出读取内容
+
+- `ls -l / | rm` 无法执行，rm没有参数
+
+- `ls -l / | xargs rm`
+
+  > 通过xargs读取标准输出的内容，传给rm
+
+### sudo命令
+
+- `sudo -i`
+
+  > 模拟root用户环境，以root用户身份启动一个新的shell会话
+
+- `sudo -su`
+
+  > 以当前用户权限运行su，再切换到root用户，但是不模拟root用户环境设置，适用于提升权限的操作
+
+### 软件包更新
+
+`apt-cache -n search 软件包名`
+
+- 搜索软件包
+
+`apt install 软件包名`
+
+- 安装软件包
+
+`apt --purge remove 软件包名`
+
+- 卸载软件包
+
+`apt list --installed | grep 软件包名`
+
+`dpkg -l 软件包名`
+
+- 查看软件包是否安装
+
+`dpkg -L 软件包名`
+
+- 查看已安装软件包中包含的文件
+
+`dpkg -S command`
+
+- 查看某个命令是由哪个软件包提供
